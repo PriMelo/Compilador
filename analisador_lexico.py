@@ -1,7 +1,7 @@
 import json
 import pickle
 
-arquivo_entrada = 'lexical_error.p'
+arquivo_entrada = 'media.p'
 
 reservada = ['fn', 'main', 'let', 'if', 'else', 'while', 'return', 'int', 'float', 'char', 'print', 'println']
 lexema_token = {'main':'MAIN', 'fn': 'FUNCTION', 'if': 'IF', 'else': 'ELSE', 'while': 'WHILE', 'return': 'RETURN', 'let':'LET',
@@ -72,7 +72,6 @@ def af_0():
             if caractere_atual.strip() != '':
                 tokens_resposta.append(('simbolo invalido',caractere_atual, linha_atual))
             prox_caractere()
-                     
 
 def af_1():  
    global caractere_atual  
@@ -202,7 +201,7 @@ def af_9():
             raise Exception ('Ops! Erro léxico')    
     else:
         raise Exception ('Ops! Erro léxico')
-#incompleto e ainda não verificou o fecha "    
+ 
 def af_10():
     global lexema_atual
     global token_atual

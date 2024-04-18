@@ -1,0 +1,124 @@
+{
+    "saida": [
+        {
+            "token": "FUNCTION"
+        },
+        {
+            "token": "MAIN"
+        },
+        {
+            "token": "LPAREN"
+        },
+        {
+            "token": "RPAREN"
+        },
+        {
+            "token": "LBRACE"
+        },
+        {
+            "token": "LET"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "COMMA"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "COMMA"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "COLON"
+        },
+        {
+            "token": "INT"
+        },
+        {
+            "token": "SEMICOLON"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "Erro sintatico - esperado: ASSIGN | LPAREN na linha: 2"
+        },
+        {
+            "token": "Erro sintatico - esperado: ASSIGN | LPAREN na linha: 2"
+        },
+        {
+            "token": "ASSINGN"
+        },
+        {
+            "token": "INT_CONST"
+        },
+        {
+            "token": "SEMICOLON"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "ASSINGN"
+        },
+        {
+            "token": "INT_CONST"
+        },
+        {
+            "token": "SEMICOLON"
+        },
+        {
+            "token": "Erro sintatico - esperado: LET | ID | IF | WHILE | PRINT | PRINTLN | RETURN  na linha: 4"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "ASSINGN"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "MINUS"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "SEMICOLON"
+        },
+        {
+            "token": "PRINT"
+        },
+        {
+            "token": "LPAREN"
+        },
+        {
+            "token": "FORMATTER_STRING"
+        },
+        {
+            "token": "COMMA"
+        },
+        {
+            "token": "Erro sintatico - esperado: ID | INT_CONST | FLOAT_CONST | CHAR_LITERAL | LPAREN na linha: 5"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "RPAREN"
+        },
+        {
+            "token": "SEMICOLON"
+        },
+        {
+            "token": "RBRACE"
+        }
+    ]
+}
