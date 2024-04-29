@@ -8,10 +8,13 @@ outro com a extesão .json com os tokens, lexemas e linhas referente ao analisad
  python3 analisador_lexico.py
  
 Exemplo:
+
  Em analisador_lexico.py :
  arquivo_entrada = 'media.p'
+ 
  Cria 'media.pkl' e 'media_tokens.json'
 
  Em analisador_sintatico.py :
  arquivo_entrada = 'media.pkl'
+ 
  Cria 'media._sintatico.json'
