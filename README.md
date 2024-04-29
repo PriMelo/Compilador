@@ -3,7 +3,7 @@
 - Executar python3 analisador_lexico.py. Será criado dois arquivos um com extensão .pkl que é a entrada do arquivo analisador_sintatico.py e 
 outro com a extesão .json com os tokens, lexemas e linhas referente ao analisador léxico.
 
--No arquivo analisador_sintatico.py acrescentar o nome do arquivo de extensão .pkl na variável arquivo_entrada.
+- No arquivo analisador_sintatico.py acrescentar o nome do arquivo de extensão .pkl na variável arquivo_entrada.
 - Executar python3 analisador_sintatico.py. Será criado um arquivos com extensão .json com os tokens correspondentes ou erros sintáticos, caso houver, referentes a análise sintática.
  python3 analisador_lexico.py
  
