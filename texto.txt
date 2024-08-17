@@ -1,0 +1,52 @@
+Programa -> Funcao FuncaoSeq
+FuncaoSeq ->Funcao FuncaoSeq
+FuncaoSeq -> epsilon
+Funcao -> fn ID ( ListaParams ) TipoRetornoFuncao Bloco
+ListaParams -> ID : Type ListaParams2 
+ListaParams ->  epsilon
+ListaParams2 -> , ID : Type ListaParams2 
+ListaParams2 -> epsilon
+TipoRetornoFuncao ->  Type 
+TipoRetornoFuncao ->  epsilon
+Bloco -> { Sequencia }
+Sequencia -> Declaracao Sequencia
+Sequencia -> Comando Sequencia 
+Sequencia -> epsilon
+Declaracao -> let VarList : Type ;
+VarList -> ID VarList2
+VarList2 -> , ID VarList2 
+VarList2 -> epsilon
+Type -> int 
+Type -> float 
+Type -> char
+Comando -> ID AtribuicaoOuChamada 
+Comando -> ComandoIf 
+Comando -> while Expr Bloco 
+Comando -> print( FORMATTED_STRING, ListaArgs ) ; 
+Comando -> println( FORMATTED_STRING, ListaArgs ) ; 
+Comando -> return Expr ;
+AtribuicaoOuChamada -> = Expr ; 
+AtribuicaoOuChamada -> ( ListaArgs )
+ComandoIf -> if Expr Bloco ComandoSenao 
+ComandoIf -> Bloco
+ComandoSenao -> else ComandoIf | epsilon
+Expr -> Rel ExprOpc
+ExprOpc -> OpIgual Rel ExprOpc | epsilon
+OpIgual -> == | !=
+Rel -> Adicao RelOpc
+RelOpc -> OpRel Adicao RelOpc | epsilon
+OpRel -> < | <= | > | >=
+Adicao -> Termo AdicaoOpc
+AdicaoOpc -> OpAdicao Termo AdicaoOpc | epsilon
+OpAdicao -> + | -
+Termo -> Fator TermoOpc
+TermoOpc -> OpMult Fator TermoOpc | epsilon
+OpMult -> * | /
+Fator -> ID ChamadaFuncao |
+ INT_CONST |
+ FLOAT_CONST |
+ CHAR_LITERAL |
+ ( Expr )
+ChamadaFuncao -> ( ListaArgs ) | epsilon
+ListaArgs -> Fator ListaArgs2 | epsilon
+ListaArgs2 -> , Fator ListaArgs2 | epsilon 
