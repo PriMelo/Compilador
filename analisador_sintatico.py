@@ -1,5 +1,9 @@
 from first_follow import first, follow
 import sys
+from asa import *
+
+        
+
 
 class TabelaDeSimbolos:
     
@@ -238,10 +242,14 @@ class AnalisadorSintatico:
                 tipo_tab_chamada = cls.tabelas[lexema].tipo_retorno
                 cls.tabela_atual.novo_elemento(chave=lexema, lexema=lexema,tipo=tipo_tab_chamada, pos_param=-1, eh_chamada=True,num_args=len(argumentos),args=argumentos)
             
-            return lexema
+            
+            node = Id_node('ID',None, None,None)
+            
+            return lexema, node
         
         elif cls.token_atual == 'INT_CONST':
             cls.match('INT_CONST')
+            node = Id_node()
             return cls.token_resposta[cls.i-1][1]
 
         elif cls.token_atual == 'FLOAT_CONST':
