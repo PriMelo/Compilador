@@ -8,11 +8,11 @@ class AstNode:
         self.op = None
 
 class Bloco_node(AstNode):
-    def __init__(self,nome):
+    def __init__(self,filhos):
         super().__init__()
-        self.children = None
+        self.children = filhos[:]
         self.node_type = 'BLOCO'
-        self.nome = nome
+        self.nome = 'BLOCO'
         
 class Function_node(AstNode):
     def __init__(self, lexema):
@@ -33,13 +33,14 @@ class RelOp_node(AstNode):
         self.data_type = None
         self.op = op
         self.esq = filho_esq
-        self.dir = filho_dir
-        
+        self.dir = filho_dir        
    
 
 class ArithOp_node(AstNode):
     def __init__(self,filho_esq, filho_dir,op):
         super().__init__()
+        self.children.append(filho_esq)
+        self.children.append(filho_dir)
         self.node_type = 'ARITHOP'
         self.data_type = None
         self.op = op
@@ -47,24 +48,30 @@ class ArithOp_node(AstNode):
         self.dir = filho_dir
             
 class Assign_node(AstNode):
-    def __init__(self):
+    def __init__(self, filho_esq, filho_dir):
         super().__init__()
+        self.children.append(filho_esq)
+        self.children.append(filho_dir)
         self.node_type = 'ASSIGN'
         self.data_type = None
         self.op = '='
-        self.esq = None
-        self.dir = None
+        self.esq = filho_esq
+        self.dir = filho_dir
         
         
 class If_node(AstNode):
-    def __init__(self):
+    def __init__(self, filho_condicao, filho_v, filho_f=None):
         super().__init__()
+        self.children.append(filho_condicao)
+        self.children.append(filho_v)
+        if filho_f:
+            self.children.append(filho_f)
         self.node_type = 'IF'
         self.data_type = None
         self.op = None
-        self.condicao = None
-        self.parte_verdadeira = None
-        self.parte_falsa = None
+        self.condicao = filho_condicao
+        self.parte_verdadeira = filho_v
+        self.parte_falsa = filho_f
 
 class While_node(AstNode):
     def __init__(self,  condicao, comando):
