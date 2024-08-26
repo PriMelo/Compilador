@@ -64,6 +64,8 @@ class AnalisadorSintatico:
     tabela_atual = None
     posicao_param = 0
     
+    vec_ast = []
+    
     tipo_de_dado = {
             'VOID': -1,
             'CHAR': 0,
@@ -169,12 +171,20 @@ class AnalisadorSintatico:
         else:
             return
         
-    def atribuicaoOuChamada(cls):
+    def atribuicaoOuChamada(cls, id_node):
         
         if cls.token_atual == 'ASSINGN':
+            assign_node = Assign_node()
             cls.match('ASSINGN')
-            cls.expr()
+            no_dir = cls.expr()
+            assign_node.dir = no_dir
+            
+            assign_node.esq = id_node
+            assign_node.children.append(assign_node.esq)
+            assign_node.children.append(assign_node.dir)
+            
             cls.match('SEMICOLON')
+            return assign_node
 
         elif cls.token_atual == 'LPAREN':
             cls.match('LPAREN')
@@ -184,13 +194,14 @@ class AnalisadorSintatico:
         else:
             cls.erro(cls.atribuicaoOuChamada, 'ASSIGN | LPAREN')
 
-    def listArgs2(cls,argumentos):
+    def listArgs2(cls,argumentos, argumentos_nodes):
 
         if cls.token_atual == 'COMMA':
             cls.match('COMMA')
-            arg = cls.fator()
+            arg, fator_node = cls.fator()
             argumentos.append(arg) 
-            cls.listArgs2(argumentos)
+            argumentos_nodes.append(fator_node) 
+            cls.listArgs2(argumentos,argumentos_nodes)
         
 
         elif cls.token_atual == 'simbolo invalido':
@@ -202,13 +213,15 @@ class AnalisadorSintatico:
     def listArgs(cls):
 
         argumentos = []
+        argumentos_nodes = []
         
         if cls.token_atual in ['ID', 'INT_CONST', 'FLOAT_CONST', 'CHAR_LITERAL', 'LPAREN']:
-            f = cls.fator()
+            f,node_fator = cls.fator()
             argumentos.append(f)
+            argumentos_nodes.append(node_fator)
     
-            cls.listArgs2(argumentos)
-            return argumentos
+            cls.listArgs2(argumentos, argumentos_nodes)
+            return argumentos, argumentos_nodes
             
         
         elif cls.token_atual == 'simbolo invalido':
@@ -218,11 +231,12 @@ class AnalisadorSintatico:
             return
         
             
-    def chamadaFuncao(cls):
+    def chamadaFuncao(cls, call_node:Call_node):
         
         if cls.token_atual == 'LPAREN':
             cls.match('LPAREN')
-            args = cls.listArgs()
+            args, args_nodes = cls.listArgs()
+            call_node.argumentos = args_nodes[:]
             cls.match('RPAREN')
             return args
 
@@ -237,56 +251,63 @@ class AnalisadorSintatico:
         if cls.token_atual == 'ID':
             cls.match('ID')
             lexema = cls.token_resposta[cls.i-1][1]
-            argumentos = cls.chamadaFuncao()
+            call_node = Call_node()
+            call_node.nome_funcao = lexema
+            argumentos = cls.chamadaFuncao(call_node)
             if not argumentos == -1:
                 tipo_tab_chamada = cls.tabelas[lexema].tipo_retorno
                 cls.tabela_atual.novo_elemento(chave=lexema, lexema=lexema,tipo=tipo_tab_chamada, pos_param=-1, eh_chamada=True,num_args=len(argumentos),args=argumentos)
             
-            
-            node = Id_node('ID',None, None,None)
-            
-            return lexema, node
+            return lexema, call_node
         
         elif cls.token_atual == 'INT_CONST':
             cls.match('INT_CONST')
-            node = Id_node()
-            return cls.token_resposta[cls.i-1][1]
+            lexema = cls.token_resposta[cls.i-1][1]
+            node = Int_const_node(lexema)
+            return cls.token_resposta[cls.i-1][1],node
 
         elif cls.token_atual == 'FLOAT_CONST':
             cls.match('FLOAT_CONST')
-            return cls.token_resposta[cls.i-1][1]
+            lexema = cls.token_resposta[cls.i-1][1]
+            node = Float_const_node(lexema)
+            return cls.token_resposta[cls.i-1][1],node
             
         elif cls.token_atual == 'CHAR_LITERAL':
             cls.match('CHAR_LITERAL')
-            return cls.token_resposta[cls.i-1][1]
+            lexema = cls.token_resposta[cls.i-1][1]
+            node = Char_const_node(lexema)
+            return cls.token_resposta[cls.i-1][1],node
             
         elif cls.token_atual == 'LPAREN':
             cls.match('LPAREN')
             cls.expr()
             cls.match('RPAREN')
-            return cls.token_resposta[cls.i-2][1]
+            return cls.token_resposta[cls.i-2][1],None
 
         else:
             cls.erro(cls.fator, 'LPAREN | ID | INT_CONST | FLOAT_CONST | CHAR_LITERAL')
-            return None
+            return None,None
             
     def opMult(cls):    
         
         if cls.token_atual == 'MULT':
             cls.match('MULT')
+            return cls.token_resposta[cls.i-1][1]
         
         elif cls.token_atual == 'DIV':
             cls.match('DIV')
+            return cls.token_resposta[cls.i-1][1]
 
         else:
             cls.erro(cls.opMult, 'MULT | DIV')    
             
-    def termoOpc(cls):
+    def termoOpc(cls, no_fator_esq):
         
         if cls.token_atual in ['MULT', 'DIV']:
-            cls.opMult()
-            cls.fator()
-            cls.termoOpc()
+            op = cls.opMult()
+            no_fator_dir = cls.fator()
+            arith_node = ArithOp_node(no_fator_esq,no_fator_dir,op)
+            cls.termoOpc(arith_node)
 
         elif cls.token_atual == 'simbolo invalido':
             cls.erro(cls.termoOpc, 'MULT | DIV')   
@@ -296,8 +317,8 @@ class AnalisadorSintatico:
         
     def termo(cls):
         
-        cls.fator()
-        cls.termoOpc()    
+        _, no_fator = cls.fator()
+        cls.termoOpc(no_fator)    
         
     def opAdicao(cls):
         
@@ -421,10 +442,15 @@ class AnalisadorSintatico:
     def comando(cls):
 
         if cls.token_atual == 'ID':
+            id_node = Id_node(lexema = cls.token_resposta[cls.i][1])
             cls.match('ID')
-            cls.atribuicaoOuChamada()
+            assign_node = cls.atribuicaoOuChamada(id_node)
+            
+            return assign_node
+            
         
         elif cls.token_atual == 'IF':
+            if_node = If_node()
             cls.comandoIf()
         
         elif cls.token_atual == 'WHILE':
@@ -468,6 +494,8 @@ class AnalisadorSintatico:
         else:
             cls.erro(cls.comando, 'RETURN')
             
+        
+            
     def varList2(cls,variaveis):
 
         if cls.token_atual == 'COMMA':
@@ -505,14 +533,15 @@ class AnalisadorSintatico:
         
         cls.match('SEMICOLON')
             
-    def sequencia(cls):
+    def sequencia(cls,no_bloco):
         if cls.token_atual == 'LET':
             cls.declaracao()
-            cls.sequencia()
+            cls.sequencia(no_bloco)
         
         elif cls.token_atual in ['ID','IF', 'WHILE', 'PRINT', 'PRINTLN', 'RETURN']:
-            cls.comando()
-            cls.sequencia()
+            no_comando = cls.comando()
+            no_bloco.children.append(no_comando)
+            cls.sequencia(no_bloco)
         
         elif cls.token_atual == 'simbolo invalido':
             cls.erro(cls.sequencia, 'LET | ID | IF | WHILE | PRINT | PRINTLN | RETURN ')    
@@ -522,8 +551,12 @@ class AnalisadorSintatico:
             
     def bloco(cls):
         cls.match('LBRACE')
-        cls.sequencia()
+        no_bloco = Bloco_node("Bloco")
+        cls.sequencia(no_bloco)
         cls.match('RBRACE')
+        return no_bloco
+        
+        
             
     def listaParams2(cls):
 
@@ -575,8 +608,8 @@ class AnalisadorSintatico:
             return    
             
     def funcao(cls):
-
         cls.match('FUNCTION')
+        
         
         if cls.token_atual == 'MAIN':
             cls.r_cria_tabela(cls.token_resposta[cls.i][1])
@@ -591,14 +624,19 @@ class AnalisadorSintatico:
         
         else:
             cls.erro(None, 'ID| MAIN')
+
+        no_function = Function_node(cls.token_resposta[cls.i-1][1])
+
         
         cls.match('LPAREN')
         cls.listaParams()
         cls.match('RPAREN')
         tipo_retorno = cls.tipoRetornoFuncao()
         cls.tabela_atual.tipo_retorno = tipo_retorno
-        
-        cls.bloco()
+        no_bloco = cls.bloco()
+        no_function.children.append(no_bloco)
+        no_function.bloco = no_bloco
+        cls.vec_ast.append(no_function)
             
     def programa(cls):
         

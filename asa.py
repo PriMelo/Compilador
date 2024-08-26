@@ -8,19 +8,20 @@ class AstNode:
         self.op = None
 
 class Bloco_node(AstNode):
-    def __init__(self,children:list):
+    def __init__(self,nome):
         super().__init__()
-        self.children = children[::]
+        self.children = None
         self.node_type = 'BLOCO'
-        self.children = children[::]
+        self.nome = nome
         
 class Function_node(AstNode):
-    def __init__(self, node_type, filho:Bloco_node, data_type, op):
+    def __init__(self, lexema):
         super().__init__()
-        self.children.append(filho)
-        self.node_type = node_type
-        self.data_type = data_type
-        self.op = op
+        self.node_type = 'FUNCTION'
+        self.data_type = None
+        self.op = None
+        self.bloco = None
+        self.nome = lexema
         
         
 class RelOp_node(AstNode):
@@ -39,8 +40,6 @@ class RelOp_node(AstNode):
 class ArithOp_node(AstNode):
     def __init__(self,filho_esq, filho_dir,op):
         super().__init__()
-        self.children.append(filho_esq)
-        self.children.append(filho_dir)
         self.node_type = 'ARITHOP'
         self.data_type = None
         self.op = op
@@ -48,29 +47,24 @@ class ArithOp_node(AstNode):
         self.dir = filho_dir
             
 class Assign_node(AstNode):
-    def __init__(self,  filho_esq, filho_dir):
+    def __init__(self):
         super().__init__()
-        self.children.append(filho_esq)
-        self.children.append(filho_dir)
         self.node_type = 'ASSIGN'
         self.data_type = None
         self.op = '='
-        self.esq = filho_esq
-        self.dir = filho_dir
+        self.esq = None
+        self.dir = None
         
         
 class If_node(AstNode):
-    def __init__(self,  condicao, parte_verdadeira, parte_falsa:None):
+    def __init__(self):
         super().__init__()
-        self.children.append(condicao)
-        self.children.append(parte_verdadeira)
-        self.children.append(parte_falsa)
         self.node_type = 'IF'
         self.data_type = None
         self.op = None
-        self.condicao = condicao
-        self.parte_verdadeira = parte_verdadeira
-        self.parte_falsa = parte_falsa
+        self.condicao = None
+        self.parte_verdadeira = None
+        self.parte_falsa = None
 
 class While_node(AstNode):
     def __init__(self,  condicao, comando):
@@ -102,23 +96,21 @@ class Return_node(AstNode):
         self.op = None
         self.expressao = expressao
         
-class AssignNode(AstNode):
-    def __init__(self, node_type, children, data_type, op):
-        super().__init__(node_type, children, data_type, op)
-        
+
         
 class Call_node(AstNode):
-    def __init__(self,argumentos:list):
+    def __init__(self,lex):
         super().__init__()
-        self.children = argumentos[::]
         self.node_type = 'CALL'
-        self.argumentos = argumentos[::]
+        self.argumentos = None
+        self.nome_funcao = lex  
 
         
 class Id_node(AstNode):
-    def __init__(self):
+    def __init__(self, lexema):
         super().__init__()
         self.node_type = 'ID'
+        self.nome = lexema
         
 
 class Int_const_node(AstNode):
