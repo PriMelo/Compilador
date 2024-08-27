@@ -1,0 +1,224 @@
+{
+    "node_type": "FUNCTION",
+    "children": [
+        {
+            "node_type": "BLOCO",
+            "children": [
+                {
+                    "node_type": "IF",
+                    "children": [
+                        {
+                            "node_type": "RELOP",
+                            "children": [
+                                {
+                                    "node_type": "ID",
+                                    "nome": "op"
+                                },
+                                {
+                                    "node_type": "CHAR_CONST",
+                                    "nome": "+"
+                                }
+                            ],
+                            "op": "=="
+                        },
+                        {
+                            "node_type": "BLOCO",
+                            "children": [
+                                {
+                                    "node_type": "RETURN",
+                                    "children": [
+                                        {
+                                            "node_type": "ARITHOP",
+                                            "children": [
+                                                {
+                                                    "node_type": "ID",
+                                                    "nome": "x"
+                                                },
+                                                {
+                                                    "node_type": "ID",
+                                                    "nome": "y"
+                                                }
+                                            ],
+                                            "op": "+"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "IF",
+                            "children": [
+                                {
+                                    "node_type": "RELOP",
+                                    "children": [
+                                        {
+                                            "node_type": "ID",
+                                            "nome": "op"
+                                        },
+                                        {
+                                            "node_type": "CHAR_CONST",
+                                            "nome": "-"
+                                        }
+                                    ],
+                                    "op": "=="
+                                },
+                                {
+                                    "node_type": "BLOCO",
+                                    "children": [
+                                        {
+                                            "node_type": "RETURN",
+                                            "children": [
+                                                {
+                                                    "node_type": "ARITHOP",
+                                                    "children": [
+                                                        {
+                                                            "node_type": "ID",
+                                                            "nome": "x"
+                                                        },
+                                                        {
+                                                            "node_type": "ID",
+                                                            "nome": "y"
+                                                        }
+                                                    ],
+                                                    "op": "-"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "node_type": "IF",
+                                    "children": [
+                                        {
+                                            "node_type": "RELOP",
+                                            "children": [
+                                                {
+                                                    "node_type": "ID",
+                                                    "nome": "op"
+                                                },
+                                                {
+                                                    "node_type": "CHAR_CONST",
+                                                    "nome": "*"
+                                                }
+                                            ],
+                                            "op": "=="
+                                        },
+                                        {
+                                            "node_type": "BLOCO",
+                                            "children": [
+                                                {
+                                                    "node_type": "RETURN",
+                                                    "children": [
+                                                        {
+                                                            "node_type": "ARITHOP",
+                                                            "children": [
+                                                                {
+                                                                    "node_type": "ID",
+                                                                    "nome": "x"
+                                                                },
+                                                                {
+                                                                    "node_type": "ID",
+                                                                    "nome": "y"
+                                                                }
+                                                            ],
+                                                            "op": "*"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "node_type": "IF",
+                                            "children": [
+                                                {
+                                                    "node_type": "RELOP",
+                                                    "children": [
+                                                        {
+                                                            "node_type": "ID",
+                                                            "nome": "op"
+                                                        },
+                                                        {
+                                                            "node_type": "CHAR_CONST",
+                                                            "nome": "/"
+                                                        }
+                                                    ],
+                                                    "op": "=="
+                                                },
+                                                {
+                                                    "node_type": "BLOCO",
+                                                    "children": [
+                                                        {
+                                                            "node_type": "IF",
+                                                            "children": [
+                                                                {
+                                                                    "node_type": "RELOP",
+                                                                    "children": [
+                                                                        {
+                                                                            "node_type": "ID",
+                                                                            "nome": "y"
+                                                                        },
+                                                                        {
+                                                                            "node_type": "INT_CONST",
+                                                                            "nome": "0"
+                                                                        }
+                                                                    ],
+                                                                    "op": "=="
+                                                                },
+                                                                {
+                                                                    "node_type": "BLOCO",
+                                                                    "children": [
+                                                                        {
+                                                                            "node_type": "RETURN",
+                                                                            "children": [
+                                                                                {
+                                                                                    "node_type": "FLOAT_CONST",
+                                                                                    "nome": "0.0"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "node_type": "RETURN",
+                                                            "children": [
+                                                                {
+                                                                    "node_type": "ARITHOP",
+                                                                    "children": [
+                                                                        {
+                                                                            "node_type": "ID",
+                                                                            "nome": "x"
+                                                                        },
+                                                                        {
+                                                                            "node_type": "ID",
+                                                                            "nome": "y"
+                                                                        }
+                                                                    ],
+                                                                    "op": "/"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "node_type": "RETURN",
+                    "children": [
+                        {
+                            "node_type": "FLOAT_CONST",
+                            "nome": "0.0"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -6,10 +6,11 @@ class AstNode:
         self.node_type = None
         self.data_type = None
         self.op = None 
+        self.nome = ''
 
     def dicionario(self):
         filho_dict = []
-        for filho in self.children:
+        for filho in self.children: 
             filho_dict.append(filho.dicionario())
         dicionario = {'node_type':self.node_type, 'children': filho_dict}
         return dicionario    
@@ -17,7 +18,7 @@ class AstNode:
 class Bloco_node(AstNode):
     def __init__(self,filhos):
         super().__init__()
-        self.children = filhos[:]
+        self.children = filhos.copy()
         self.node_type = 'BLOCO'
         self.nome = 'BLOCO'    
 
@@ -30,9 +31,6 @@ class Function_node(AstNode):
         self.bloco = None
         self.nome = lexema
 
-    def dicionario(self):
-        dicionario = {'node_type':self.node_type, 'nome':self.nome, 'children':[self.children[0].dicionario()]} 
-        return dicionario   
         
 class RelOp_node(AstNode):
     def __init__(self,filho_esq, filho_dir,op):
@@ -108,7 +106,7 @@ class While_node(AstNode):
         self.comando = comando
         
 class Print_node(AstNode):
-    def __init__(self, argumento, quebra_linha:False):
+    def __init__(self, argumento, quebra_linha=False):
         super().__init__()
         self.children.append(argumento)
         self.node_type = 'PRINT'
@@ -131,8 +129,7 @@ class Call_node(AstNode):
     def __init__(self,lex):
         super().__init__()
         self.node_type = 'CALL'
-        self.argumentos = None
-        self.nome_funcao = lex  
+        self.nome = lex  
 
         
 class Id_node(AstNode):
@@ -142,9 +139,6 @@ class Id_node(AstNode):
         self.nome = lexema
 
     def dicionario(self):
-        filho_dict = []
-        for filho in self.children:
-            filho_dict.append(filho.dicionario())
         dicionario = {'node_type':self.node_type, 'nome':self.nome }
         return dicionario       
 
@@ -156,9 +150,6 @@ class Int_const_node(AstNode):
         self.nome = lexema
     
     def dicionario(self):
-        filho_dict = []
-        for filho in self.children:
-            filho_dict.append(filho.dicionario())
         dicionario = {'node_type':self.node_type, 'nome':self.nome }
         return dicionario  
         
@@ -171,9 +162,6 @@ class Float_const_node(AstNode):
         self.nome = lexema
 
     def dicionario(self):
-        filho_dict = []
-        for filho in self.children:
-            filho_dict.append(filho.dicionario())
         dicionario = {'node_type':self.node_type, 'nome':self.nome }
         return dicionario      
         
@@ -185,9 +173,6 @@ class Char_const_node(AstNode):
         self.nome = lexema
         
     def dicionario(self):
-        filho_dict = []
-        for filho in self.children:
-            filho_dict.append(filho.dicionario())
         dicionario = {'node_type':self.node_type, 'nome':self.nome }
         return dicionario   
         
