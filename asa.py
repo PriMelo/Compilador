@@ -5,15 +5,22 @@ class AstNode:
         self.children = []
         self.node_type = None
         self.data_type = None
-        self.op = None
+        self.op = None 
+
+    def dicionario(self):
+        filho_dict = []
+        for filho in self.children:
+            filho_dict.append(filho.dicionario())
+        dicionario = {'node_type':self.node_type, 'children': filho_dict}
+        return dicionario    
 
 class Bloco_node(AstNode):
     def __init__(self,filhos):
         super().__init__()
         self.children = filhos[:]
         self.node_type = 'BLOCO'
-        self.nome = 'BLOCO'
-        
+        self.nome = 'BLOCO'    
+
 class Function_node(AstNode):
     def __init__(self, lexema):
         super().__init__()
@@ -22,7 +29,10 @@ class Function_node(AstNode):
         self.op = None
         self.bloco = None
         self.nome = lexema
-        
+
+    def dicionario(self):
+        dicionario = {'node_type':self.node_type, 'nome':self.nome, 'children':[self.children[0].dicionario()]} 
+        return dicionario   
         
 class RelOp_node(AstNode):
     def __init__(self,filho_esq, filho_dir,op):
@@ -35,6 +45,12 @@ class RelOp_node(AstNode):
         self.esq = filho_esq
         self.dir = filho_dir        
    
+    def dicionario(self):
+        filho_dict = []
+        for filho in self.children:
+            filho_dict.append(filho.dicionario())
+        dicionario = {'node_type':self.node_type, 'children': filho_dict, 'op':self.op }
+        return dicionario
 
 class ArithOp_node(AstNode):
     def __init__(self,filho_esq, filho_dir,op):
@@ -46,6 +62,13 @@ class ArithOp_node(AstNode):
         self.op = op
         self.esq = filho_esq
         self.dir = filho_dir
+    
+    def dicionario(self):
+        filho_dict = []
+        for filho in self.children:
+            filho_dict.append(filho.dicionario())
+        dicionario = {'node_type':self.node_type, 'children': filho_dict, 'op':self.op }
+        return dicionario        
             
 class Assign_node(AstNode):
     def __init__(self, filho_esq, filho_dir):
@@ -101,8 +124,7 @@ class Return_node(AstNode):
         self.node_type = 'RETURN'
         self.data_type = None
         self.op = None
-        self.expressao = expressao
-        
+        self.expressao = expressao       
 
         
 class Call_node(AstNode):
@@ -118,22 +140,54 @@ class Id_node(AstNode):
         super().__init__()
         self.node_type = 'ID'
         self.nome = lexema
-        
+
+    def dicionario(self):
+        filho_dict = []
+        for filho in self.children:
+            filho_dict.append(filho.dicionario())
+        dicionario = {'node_type':self.node_type, 'nome':self.nome }
+        return dicionario       
 
 class Int_const_node(AstNode):
-    def __init__(self):
+    def __init__(self, lexema):
         super().__init__()
         self.node_type = 'INT_CONST'
         self.data_type = 'int'
+        self.nome = lexema
+    
+    def dicionario(self):
+        filho_dict = []
+        for filho in self.children:
+            filho_dict.append(filho.dicionario())
+        dicionario = {'node_type':self.node_type, 'nome':self.nome }
+        return dicionario  
+        
        
 class Float_const_node(AstNode):
-    def __init__(self):
+    def __init__(self, lexema):
         super().__init__()
         self.node_type = 'FLOAT_CONST'
         self.data_type = 'float'
+        self.nome = lexema
+
+    def dicionario(self):
+        filho_dict = []
+        for filho in self.children:
+            filho_dict.append(filho.dicionario())
+        dicionario = {'node_type':self.node_type, 'nome':self.nome }
+        return dicionario      
         
 class Char_const_node(AstNode):
-    def __init__(self):
+    def __init__(self, lexema):
         super().__init__()
         self.node_type = 'CHAR_CONST'
         self.data_type = 'char'
+        self.nome = lexema
+        
+    def dicionario(self):
+        filho_dict = []
+        for filho in self.children:
+            filho_dict.append(filho.dicionario())
+        dicionario = {'node_type':self.node_type, 'nome':self.nome }
+        return dicionario   
+        

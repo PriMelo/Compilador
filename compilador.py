@@ -6,6 +6,7 @@ an_sintatico = AnalisadorSintatico()
 arquivo = 'code1.p'
 saida_an_lexico = an_lexico.analisar(arquivo)
 saida_an_sintatico = an_sintatico.analisar(saida_an_lexico) 
+an_sintatico.representacao_ASA()
 
 #print(saida_an_sintatico)
 

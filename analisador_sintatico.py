@@ -1,7 +1,7 @@
 from first_follow import first, follow
 import sys
 from asa import *
-
+import json
         
 
 
@@ -670,8 +670,12 @@ class AnalisadorSintatico:
         else:
             cls.erro(cls.programa, 'FUNCTION')
             
-    def representacao_ASA():
-            
+    def representacao_ASA(cls):
+        for asa in cls.vec_ast:
+            #j = json.dumps(asa.dicionario)
+            with open(f"{asa.nome}.json", "w") as outfile:
+                json.dump(asa.dicionario(), outfile, indent = 4, sort_keys=False)
+                
         
 
     
