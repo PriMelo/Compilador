@@ -158,8 +158,8 @@
                                                                             "nome": "y"
                                                                         },
                                                                         {
-                                                                            "node_type": "INT_CONST",
-                                                                            "nome": "0"
+                                                                            "node_type": "FLOAT_CONST",
+                                                                            "nome": "0.0"
                                                                         }
                                                                     ],
                                                                     "op": "=="

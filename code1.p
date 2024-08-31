@@ -3,9 +3,8 @@ fn soma(x: int, y: int) -> int {
 }
 
 fn main(){ 
-    let a, c: int;
-     let b: float;
-    b = 40.2;
+    let a,b, c: int;
+    b = 40;
     c = 39;
     a = soma(b,c);
     print("{}", a);

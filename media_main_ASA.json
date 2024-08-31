@@ -1,0 +1,101 @@
+{
+    "node_type": "FUNCTION",
+    "children": [
+        {
+            "node_type": "BLOCO",
+            "children": [
+                {
+                    "node_type": "ASSIGN",
+                    "children": [
+                        {
+                            "node_type": "ID",
+                            "nome": "a"
+                        },
+                        {
+                            "node_type": "FLOAT_CONST",
+                            "nome": "8.2"
+                        }
+                    ]
+                },
+                {
+                    "node_type": "ASSIGN",
+                    "children": [
+                        {
+                            "node_type": "ID",
+                            "nome": "b"
+                        },
+                        {
+                            "node_type": "FLOAT_CONST",
+                            "nome": "6.5"
+                        }
+                    ]
+                },
+                {
+                    "node_type": "ASSIGN",
+                    "children": [
+                        {
+                            "node_type": "ID",
+                            "nome": "c"
+                        },
+                        {
+                            "node_type": "FLOAT_CONST",
+                            "nome": "7.0"
+                        }
+                    ]
+                },
+                {
+                    "node_type": "ASSIGN",
+                    "children": [
+                        {
+                            "node_type": "ID",
+                            "nome": "media"
+                        },
+                        {
+                            "node_type": "ARITHOP",
+                            "children": [
+                                {
+                                    "node_type": "ARITHOP",
+                                    "children": [
+                                        {
+                                            "node_type": "ARITHOP",
+                                            "children": [
+                                                {
+                                                    "node_type": "ID",
+                                                    "nome": "a"
+                                                },
+                                                {
+                                                    "node_type": "ID",
+                                                    "nome": "b"
+                                                }
+                                            ],
+                                            "op": "+"
+                                        },
+                                        {
+                                            "node_type": "ID",
+                                            "nome": "c"
+                                        }
+                                    ],
+                                    "op": "+"
+                                },
+                                {
+                                    "node_type": "FLOAT_CONST",
+                                    "nome": "3.0"
+                                }
+                            ],
+                            "op": "/"
+                        }
+                    ]
+                },
+                {
+                    "node_type": "PRINT",
+                    "children": [
+                        {
+                            "node_type": "ID",
+                            "nome": "media"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

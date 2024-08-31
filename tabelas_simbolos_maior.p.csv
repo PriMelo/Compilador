@@ -1,0 +1,11 @@
+maior
+chave,nome,tipo_de_dado,pos_param,eh_chamada,num_args,args
+a,a,1,0,False,0,[]
+b,b,1,1,False,0,[]
+m,m,1,-1,False,0,[]
+main
+chave,nome,tipo_de_dado,pos_param,eh_chamada,num_args,args
+x,x,1,-1,False,0,[]
+y,y,1,-1,False,0,[]
+maior,maior,1,-1,True,2,"['x', 'y']"
+print,print,-1,-1,True,2,"['sys_call(print)', 'maior']"

@@ -1,0 +1,69 @@
+{
+    "node_type": "FUNCTION",
+    "children": [
+        {
+            "node_type": "BLOCO",
+            "children": [
+                {
+                    "node_type": "ASSIGN",
+                    "children": [
+                        {
+                            "node_type": "ID",
+                            "nome": "m"
+                        },
+                        {
+                            "node_type": "ID",
+                            "nome": "a"
+                        }
+                    ]
+                },
+                {
+                    "node_type": "IF",
+                    "children": [
+                        {
+                            "node_type": "RELOP",
+                            "children": [
+                                {
+                                    "node_type": "ID",
+                                    "nome": "b"
+                                },
+                                {
+                                    "node_type": "ID",
+                                    "nome": "m"
+                                }
+                            ],
+                            "op": ">"
+                        },
+                        {
+                            "node_type": "BLOCO",
+                            "children": [
+                                {
+                                    "node_type": "ASSIGN",
+                                    "children": [
+                                        {
+                                            "node_type": "ID",
+                                            "nome": "m"
+                                        },
+                                        {
+                                            "node_type": "ID",
+                                            "nome": "b"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "node_type": "RETURN",
+                    "children": [
+                        {
+                            "node_type": "ID",
+                            "nome": "m"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,354 @@
+{
+    "saida": [
+        {
+            "token": "FUNCTION",
+            "lexema": "fn",
+            "linha": 0
+        },
+        {
+            "token": "ID",
+            "lexema": "maior",
+            "linha": 0
+        },
+        {
+            "token": "LPAREN",
+            "lexema": "(",
+            "linha": 0
+        },
+        {
+            "token": "ID",
+            "lexema": "a",
+            "linha": 0
+        },
+        {
+            "token": "COLON",
+            "lexema": ":",
+            "linha": 0
+        },
+        {
+            "token": "INT",
+            "lexema": "int",
+            "linha": 0
+        },
+        {
+            "token": "COMMA",
+            "lexema": ",",
+            "linha": 0
+        },
+        {
+            "token": "ID",
+            "lexema": "b",
+            "linha": 0
+        },
+        {
+            "token": "COLON",
+            "lexema": ":",
+            "linha": 0
+        },
+        {
+            "token": "INT",
+            "lexema": "int",
+            "linha": 0
+        },
+        {
+            "token": "RPAREN",
+            "lexema": ")",
+            "linha": 0
+        },
+        {
+            "token": "ARROW",
+            "lexema": "->",
+            "linha": 0
+        },
+        {
+            "token": "INT",
+            "lexema": "int",
+            "linha": 0
+        },
+        {
+            "token": "LBRACE",
+            "lexema": "{",
+            "linha": 0
+        },
+        {
+            "token": "LET",
+            "lexema": "let",
+            "linha": 1
+        },
+        {
+            "token": "ID",
+            "lexema": "m",
+            "linha": 1
+        },
+        {
+            "token": "COLON",
+            "lexema": ":",
+            "linha": 1
+        },
+        {
+            "token": "INT",
+            "lexema": "int",
+            "linha": 1
+        },
+        {
+            "token": "SEMICOLON",
+            "lexema": ";",
+            "linha": 1
+        },
+        {
+            "token": "ID",
+            "lexema": "m",
+            "linha": 2
+        },
+        {
+            "token": "ASSINGN",
+            "lexema": "=",
+            "linha": 2
+        },
+        {
+            "token": "ID",
+            "lexema": "a",
+            "linha": 2
+        },
+        {
+            "token": "SEMICOLON",
+            "lexema": ";",
+            "linha": 2
+        },
+        {
+            "token": "IF",
+            "lexema": "if",
+            "linha": 3
+        },
+        {
+            "token": "ID",
+            "lexema": "b",
+            "linha": 3
+        },
+        {
+            "token": "GT",
+            "lexema": ">",
+            "linha": 3
+        },
+        {
+            "token": "ID",
+            "lexema": "m",
+            "linha": 3
+        },
+        {
+            "token": "LBRACE",
+            "lexema": "{",
+            "linha": 3
+        },
+        {
+            "token": "ID",
+            "lexema": "m",
+            "linha": 4
+        },
+        {
+            "token": "ASSINGN",
+            "lexema": "=",
+            "linha": 4
+        },
+        {
+            "token": "ID",
+            "lexema": "b",
+            "linha": 4
+        },
+        {
+            "token": "SEMICOLON",
+            "lexema": ";",
+            "linha": 4
+        },
+        {
+            "token": "RBRACE",
+            "lexema": "}",
+            "linha": 5
+        },
+        {
+            "token": "RETURN",
+            "lexema": "return",
+            "linha": 6
+        },
+        {
+            "token": "ID",
+            "lexema": "m",
+            "linha": 6
+        },
+        {
+            "token": "SEMICOLON",
+            "lexema": ";",
+            "linha": 6
+        },
+        {
+            "token": "RBRACE",
+            "lexema": "}",
+            "linha": 7
+        },
+        {
+            "token": "FUNCTION",
+            "lexema": "fn",
+            "linha": 9
+        },
+        {
+            "token": "MAIN",
+            "lexema": "main",
+            "linha": 9
+        },
+        {
+            "token": "LPAREN",
+            "lexema": "(",
+            "linha": 9
+        },
+        {
+            "token": "RPAREN",
+            "lexema": ")",
+            "linha": 9
+        },
+        {
+            "token": "LBRACE",
+            "lexema": "{",
+            "linha": 9
+        },
+        {
+            "token": "LET",
+            "lexema": "let",
+            "linha": 10
+        },
+        {
+            "token": "ID",
+            "lexema": "x",
+            "linha": 10
+        },
+        {
+            "token": "COMMA",
+            "lexema": ",",
+            "linha": 10
+        },
+        {
+            "token": "ID",
+            "lexema": "y",
+            "linha": 10
+        },
+        {
+            "token": "COLON",
+            "lexema": ":",
+            "linha": 10
+        },
+        {
+            "token": "INT",
+            "lexema": "int",
+            "linha": 10
+        },
+        {
+            "token": "SEMICOLON",
+            "lexema": ";",
+            "linha": 10
+        },
+        {
+            "token": "ID",
+            "lexema": "x",
+            "linha": 11
+        },
+        {
+            "token": "ASSINGN",
+            "lexema": "=",
+            "linha": 11
+        },
+        {
+            "token": "INT_CONST",
+            "lexema": "10",
+            "linha": 11
+        },
+        {
+            "token": "SEMICOLON",
+            "lexema": ";",
+            "linha": 11
+        },
+        {
+            "token": "ID",
+            "lexema": "y",
+            "linha": 12
+        },
+        {
+            "token": "ASSINGN",
+            "lexema": "=",
+            "linha": 12
+        },
+        {
+            "token": "INT_CONST",
+            "lexema": "20",
+            "linha": 12
+        },
+        {
+            "token": "SEMICOLON",
+            "lexema": ";",
+            "linha": 12
+        },
+        {
+            "token": "PRINT",
+            "lexema": "print",
+            "linha": 13
+        },
+        {
+            "token": "LPAREN",
+            "lexema": "(",
+            "linha": 13
+        },
+        {
+            "token": "FORMATTER_STRING",
+            "lexema": "{}",
+            "linha": 13
+        },
+        {
+            "token": "COMMA",
+            "lexema": ",",
+            "linha": 13
+        },
+        {
+            "token": "ID",
+            "lexema": "maior",
+            "linha": 13
+        },
+        {
+            "token": "LPAREN",
+            "lexema": "(",
+            "linha": 13
+        },
+        {
+            "token": "ID",
+            "lexema": "x",
+            "linha": 13
+        },
+        {
+            "token": "COMMA",
+            "lexema": ",",
+            "linha": 13
+        },
+        {
+            "token": "ID",
+            "lexema": "y",
+            "linha": 13
+        },
+        {
+            "token": "RPAREN",
+            "lexema": ")",
+            "linha": 13
+        },
+        {
+            "token": "RPAREN",
+            "lexema": ")",
+            "linha": 13
+        },
+        {
+            "token": "SEMICOLON",
+            "lexema": ";",
+            "linha": 13
+        },
+        {
+            "token": "RBRACE",
+            "lexema": "}",
+            "linha": 14
+        }
+    ]
+}

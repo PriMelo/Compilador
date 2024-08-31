@@ -1,0 +1,7 @@
+main
+chave,nome,tipo_de_dado,pos_param,eh_chamada,num_args,args
+a,a,2,-1,False,0,[]
+b,b,2,-1,False,0,[]
+c,c,2,-1,False,0,[]
+media,media,2,-1,False,0,[]
+println,println,-1,-1,True,2,"['sys_call(print)', 'media']"

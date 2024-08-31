@@ -2,53 +2,11 @@ from first_follow import first, follow
 import sys
 from asa import *
 import json
+from tabela_simbolos import TabelaDeSimbolos
         
 argumentos = []
 
-class TabelaDeSimbolos:
-    
-    def __init__(self, nome_tab):
-        self.nome = nome_tab
-        self.tipo_retorno = None
-        self.elementos = {}
 
-           
-        
-    def novo_elemento(self,chave, lexema, tipo, pos_param, eh_chamada=False, num_args=0, args=[]):
-        
-        if lexema not in self.elementos:
-        
-            self.elementos[chave] ={
-                'nome': lexema,
-                'tipo_de_dado': tipo,
-                'pos_param':pos_param,
-                'eh_chamada': eh_chamada,
-                'num_args': num_args,
-                'args':args,
-                'chave': chave
-            }
-            
-        # elif -> se tiver duas chamadas de função iguais?
-        
-        else:
-            print('Erro semântico: redeclaração de identificador')
-    
-    def get_elemento(self,lexema):
-        
-        if self.elementos[lexema]:
-            
-            return self.elementos[lexema]
-        
-        else:
-            print('Erro: elemento não existe na tabela')
-            
-    def print_tab(self):
-        print(f"Tabela {self.nome}")
-        for e in self.elementos.values():
-            print(f"chave:{e['chave']} nome: {e['nome']} tipo_de_dado: {e['tipo_de_dado']} pos_param: {e['pos_param']} eh_chamada: {e['eh_chamada']} num_args: {e['num_args']} args: {e['args']}")
-        
-        
-        
     
 class AnalisadorSintatico:
         
@@ -72,17 +30,6 @@ class AnalisadorSintatico:
             'FLOAT': 2       
         }
     
-    def compatibilidade_tipos(cls,lex_esq, lex_dir):
-        
-        
-        tipo_esq = cls.tabela_atual.elementos[lex_esq]['tipo_de_dado']
-        tipo_dir = cls.tabela_atual.elementos[lex_dir]['tipo_de_dado']
-        
-        if tipo_esq != tipo_dir:
-            
-            return f'Tipos incopatíveis na expressão aritmética da linha {cls.token_resposta[cls.i-1][2]}'
-        
-        return None
     
     def r_cria_tabela(cls, lexema):
         
@@ -101,7 +48,7 @@ class AnalisadorSintatico:
     def nova_tabela(cls,nome_tab):
         cls.tabelas[nome_tab] = None
     
-    def analisar(cls, saida_an_lexico):
+    def analisar(cls, saida_an_lexico,arquivo_entrada):
         cls.token_resposta = saida_an_lexico.copy()
         cls.token_atual = cls.token_resposta[cls.i][0]
         cls.programa()
@@ -116,8 +63,8 @@ class AnalisadorSintatico:
                     }
                 )
                 
-        for k in cls.tabelas:
-            print(cls.tabelas[k].print_tab())
+        with open(f"{arquivo_entrada[:-3]}_sintatico.json", "w") as arquivo:     
+            json.dump(saida, arquivo, indent=4)
         
         return saida
                 
@@ -262,6 +209,7 @@ class AnalisadorSintatico:
                 
                 call_node = Call_node(lexema)
                 call_node.nome_funcao = lexema
+                call_node.data_type = cls.tabelas[call_node.nome].tipo_retorno
                 call_node = cls.chamadaFuncao(call_node)
                 
             
@@ -273,26 +221,29 @@ class AnalisadorSintatico:
             
             else:
                 
-                return Id_node(lexema)
+                id_node = Id_node(lexema)
+                id_node.data_type = cls.tabela_atual.elementos[lexema]['tipo_de_dado']
+                return id_node
                 
         
         elif cls.token_atual == 'INT_CONST':
             cls.match('INT_CONST')
             lexema = cls.token_resposta[cls.i-1][1]
-            node = Int_const_node(lexema)
-            return node
+            int_node = Int_const_node(lexema)
+            return int_node
+            
 
         elif cls.token_atual == 'FLOAT_CONST':
             cls.match('FLOAT_CONST')
             lexema = cls.token_resposta[cls.i-1][1]
-            node = Float_const_node(lexema)
-            return node
+            float_node = Float_const_node(lexema)
+            return float_node
             
         elif cls.token_atual == 'CHAR_LITERAL':
             cls.match('CHAR_LITERAL')
             lexema = cls.token_resposta[cls.i-1][1]
-            node = Char_const_node(lexema)
-            return node
+            char_node = Char_const_node(lexema)
+            return char_node
             
         elif cls.token_atual == 'LPAREN':
             cls.match('LPAREN')
@@ -323,9 +274,6 @@ class AnalisadorSintatico:
             op = cls.opMult()
             no_fator_dir = cls.fator()
             arith_node = ArithOp_node(no_fator_esq,no_fator_dir,op)
-            erro_tipo = cls.compatibilidade_tipos(no_fator_esq.nome, no_fator_dir.nome)
-            if erro_tipo:
-                print(erro_tipo)
             arith_node = cls.termoOpc(arith_node)
             return arith_node        
 
@@ -360,9 +308,6 @@ class AnalisadorSintatico:
             op = cls.opAdicao()
             no_adicao_dir = cls.termo()
             arith_node2 = ArithOp_node(no_adicao_esq, no_adicao_dir, op)
-            erro_tipo = cls.compatibilidade_tipos(no_adicao_esq.nome, no_adicao_dir.nome)
-            if erro_tipo:
-                print(erro_tipo)
             arith_node2 = cls.adicaoOpc(arith_node2)
             return arith_node2
 
@@ -490,9 +435,12 @@ class AnalisadorSintatico:
     def comando(cls):
         
         if cls.token_atual == 'ID':
-            id_node = Id_node(lexema = cls.token_resposta[cls.i][1])
+            lexema =  cls.token_resposta[cls.i][1]
+            id_node = Id_node(lexema)
+            id_node.data_type = cls.tabela_atual.elementos[lexema]['tipo_de_dado']
             cls.match('ID')
-            assign_node = cls.atribuicaoOuChamada(id_node)            
+            assign_node = cls.atribuicaoOuChamada(id_node)                
+                  
             return assign_node
             
         
@@ -564,7 +512,7 @@ class AnalisadorSintatico:
             cls.erro(cls.varList2, 'COMMA')      
 
         elif cls.token_atual in follow[sys._getframe().f_code.co_name]:
-            return
+            return variaveis
         else:
             cls.erro(getattr(cls, sys._getframe().f_code.co_name), 'COMMA | ' + ' | '.join(follow[sys._getframe().f_code.co_name]))
         
@@ -705,10 +653,10 @@ class AnalisadorSintatico:
         else:
             cls.erro(cls.programa, 'FUNCTION')
             
-    def representacao_ASA(cls):
+    def representacao_ASA(cls,arq):
         for asa in cls.vec_ast:
             #j = json.dumps(asa.dicionario)
-            with open(f"{asa.nome}.json", "w") as outfile:
+            with open(f"{arq}_{asa.nome}_ASA.json", "w") as outfile:
                 json.dump(asa.dicionario(), outfile, indent = 4, sort_keys=False)
                 
         

@@ -9,7 +9,7 @@ fn calculadora(op: char, x: float, y: float) -> float {
         return x * y;
     }
     else if op == '/' {
-        if y == 0 {
+        if y == 0.0 {
             return 0.0;
         }
         return x / y;

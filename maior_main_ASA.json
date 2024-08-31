@@ -1,0 +1,54 @@
+{
+    "node_type": "FUNCTION",
+    "children": [
+        {
+            "node_type": "BLOCO",
+            "children": [
+                {
+                    "node_type": "ASSIGN",
+                    "children": [
+                        {
+                            "node_type": "ID",
+                            "nome": "x"
+                        },
+                        {
+                            "node_type": "INT_CONST",
+                            "nome": "10"
+                        }
+                    ]
+                },
+                {
+                    "node_type": "ASSIGN",
+                    "children": [
+                        {
+                            "node_type": "ID",
+                            "nome": "y"
+                        },
+                        {
+                            "node_type": "INT_CONST",
+                            "nome": "20"
+                        }
+                    ]
+                },
+                {
+                    "node_type": "PRINT",
+                    "children": [
+                        {
+                            "node_type": "CALL",
+                            "children": [
+                                {
+                                    "node_type": "ID",
+                                    "nome": "x"
+                                },
+                                {
+                                    "node_type": "ID",
+                                    "nome": "y"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

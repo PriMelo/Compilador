@@ -1,0 +1,343 @@
+{
+    "saida": [
+        {
+            "token": "FUNCTION"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "LPAREN"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "COLON"
+        },
+        {
+            "token": "CHAR"
+        },
+        {
+            "token": "COMMA"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "COLON"
+        },
+        {
+            "token": "FLOAT"
+        },
+        {
+            "token": "COMMA"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "COLON"
+        },
+        {
+            "token": "FLOAT"
+        },
+        {
+            "token": "RPAREN"
+        },
+        {
+            "token": "ARROW"
+        },
+        {
+            "token": "FLOAT"
+        },
+        {
+            "token": "LBRACE"
+        },
+        {
+            "token": "IF"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "EQUAL"
+        },
+        {
+            "token": "CHAR_LITERAL"
+        },
+        {
+            "token": "LBRACE"
+        },
+        {
+            "token": "RETURN"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "PLUS"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "SEMICOLON"
+        },
+        {
+            "token": "RBRACE"
+        },
+        {
+            "token": "ELSE"
+        },
+        {
+            "token": "IF"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "EQUAL"
+        },
+        {
+            "token": "CHAR_LITERAL"
+        },
+        {
+            "token": "LBRACE"
+        },
+        {
+            "token": "RETURN"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "MINUS"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "SEMICOLON"
+        },
+        {
+            "token": "RBRACE"
+        },
+        {
+            "token": "ELSE"
+        },
+        {
+            "token": "IF"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "EQUAL"
+        },
+        {
+            "token": "CHAR_LITERAL"
+        },
+        {
+            "token": "LBRACE"
+        },
+        {
+            "token": "RETURN"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "MULT"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "SEMICOLON"
+        },
+        {
+            "token": "RBRACE"
+        },
+        {
+            "token": "ELSE"
+        },
+        {
+            "token": "IF"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "EQUAL"
+        },
+        {
+            "token": "CHAR_LITERAL"
+        },
+        {
+            "token": "LBRACE"
+        },
+        {
+            "token": "IF"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "EQUAL"
+        },
+        {
+            "token": "FLOAT_CONST"
+        },
+        {
+            "token": "LBRACE"
+        },
+        {
+            "token": "RETURN"
+        },
+        {
+            "token": "FLOAT_CONST"
+        },
+        {
+            "token": "SEMICOLON"
+        },
+        {
+            "token": "RBRACE"
+        },
+        {
+            "token": "RETURN"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "DIV"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "SEMICOLON"
+        },
+        {
+            "token": "RBRACE"
+        },
+        {
+            "token": "RETURN"
+        },
+        {
+            "token": "FLOAT_CONST"
+        },
+        {
+            "token": "SEMICOLON"
+        },
+        {
+            "token": "RBRACE"
+        },
+        {
+            "token": "FUNCTION"
+        },
+        {
+            "token": "MAIN"
+        },
+        {
+            "token": "LPAREN"
+        },
+        {
+            "token": "RPAREN"
+        },
+        {
+            "token": "LBRACE"
+        },
+        {
+            "token": "LET"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "COMMA"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "COLON"
+        },
+        {
+            "token": "FLOAT"
+        },
+        {
+            "token": "SEMICOLON"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "ASSINGN"
+        },
+        {
+            "token": "FLOAT_CONST"
+        },
+        {
+            "token": "SEMICOLON"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "ASSINGN"
+        },
+        {
+            "token": "FLOAT_CONST"
+        },
+        {
+            "token": "SEMICOLON"
+        },
+        {
+            "token": "PRINTLN"
+        },
+        {
+            "token": "LPAREN"
+        },
+        {
+            "token": "FORMATTER_STRING"
+        },
+        {
+            "token": "COMMA"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "LPAREN"
+        },
+        {
+            "token": "CHAR_LITERAL"
+        },
+        {
+            "token": "COMMA"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "COMMA"
+        },
+        {
+            "token": "ID"
+        },
+        {
+            "token": "RPAREN"
+        },
+        {
+            "token": "RPAREN"
+        },
+        {
+            "token": "SEMICOLON"
+        },
+        {
+            "token": "RBRACE"
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+calculadora
+chave,nome,tipo_de_dado,pos_param,eh_chamada,num_args,args
+op,op,0,0,False,0,[]
+x,x,2,1,False,0,[]
+y,y,2,2,False,0,[]
+main
+chave,nome,tipo_de_dado,pos_param,eh_chamada,num_args,args
+a,a,2,-1,False,0,[]
+b,b,2,-1,False,0,[]
+calculadora,calculadora,2,-1,True,3,"['*', 'a', 'b']"
+println,println,-1,-1,True,2,"['sys_call(print)', 'calculadora']"

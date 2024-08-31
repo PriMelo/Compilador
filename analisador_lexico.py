@@ -1,4 +1,7 @@
 
+import json
+
+
 class AnalisadorLexico:
     
 
@@ -24,7 +27,7 @@ class AnalisadorLexico:
         cls.caractere_atual = cls.linhas[cls.linha_atual][cls.indice_caractere_atual]
         cls.af_0()
         
-        """
+        
         saida = {'saida':[]}   
 
         for r in cls.tokens_resposta:
@@ -36,8 +39,11 @@ class AnalisadorLexico:
                         'linha': r[2] 
                     }
                 )
+            
+        with open(f"{arquivo_entrada[:-2]}_lexico.json", "w") as arquivo:     
+            json.dump(saida, arquivo, indent=4)
                 
-                """
+        
            
         return cls.tokens_resposta
             
